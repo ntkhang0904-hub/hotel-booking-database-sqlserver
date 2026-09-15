@@ -1,9 +1,3 @@
--- ============================================================================
--- DU AN: HE THONG CSDL QUAN LY & DAT PHONG CHUOI KHACH SAN (HOTEL BOOKING DB)
--- FILE: 01_schema_and_tables.sql
--- MO TA: Khoi tao CSDL, 10 Bang quan he va cac Rang buoc toan ven (Constraints)
--- ============================================================================
-
 -- 1. TAO DATABASE
 IF NOT EXISTS (SELECT * FROM sys.databases WHERE name = 'HotelBookingDB')
 BEGIN
@@ -27,9 +21,6 @@ IF OBJECT_ID('dbo.Branches', 'U') IS NOT NULL DROP TABLE dbo.Branches;
 IF OBJECT_ID('dbo.AuditLogs', 'U') IS NOT NULL DROP TABLE dbo.AuditLogs;
 GO
 
--- ============================================================================
--- 2. TAO CAC BANG THUC THE (TABLE DEFINITIONS)
--- ============================================================================
 
 -- BANG 1: Chi nhanh khach san (Branches)
 CREATE TABLE Branches (
@@ -49,10 +40,10 @@ GO
 -- BANG 2: Loai phong (RoomTypes)
 CREATE TABLE RoomTypes (
     RoomTypeID INT IDENTITY(1,1) PRIMARY KEY,
-    TypeName NVARCHAR(50) NOT NULL UNIQUE,       -- Standard, Superior, Deluxe, Suite, Presidential
-    BasePricePerNight DECIMAL(18,2) NOT NULL,    -- Gia goc mot dem (VND)
-    Capacity INT NOT NULL,                       -- So luong nguoi toi da
-    BedType NVARCHAR(50) NOT NULL,               -- Single, Double, Queen, King
+    TypeName NVARCHAR(50) NOT NULL UNIQUE,      
+    BasePricePerNight DECIMAL(18,2) NOT NULL,    
+    Capacity INT NOT NULL,                     
+    BedType NVARCHAR(50) NOT NULL,              
     Description NVARCHAR(255) NULL,
     
     CONSTRAINT CK_RoomTypes_Price CHECK (BasePricePerNight > 0),
@@ -67,7 +58,7 @@ CREATE TABLE Rooms (
     RoomTypeID INT NOT NULL,
     RoomNumber VARCHAR(10) NOT NULL,
     Floor INT NOT NULL,
-    Status NVARCHAR(20) DEFAULT N'Available',    -- Available, Occupied, Maintenance
+    Status NVARCHAR(20) DEFAULT N'Available',    
     
     CONSTRAINT FK_Rooms_Branches FOREIGN KEY (BranchID) REFERENCES Branches(BranchID) ON DELETE CASCADE,
     CONSTRAINT FK_Rooms_RoomTypes FOREIGN KEY (RoomTypeID) REFERENCES RoomTypes(RoomTypeID),
@@ -80,10 +71,10 @@ GO
 CREATE TABLE Customers (
     CustomerID INT IDENTITY(1,1) PRIMARY KEY,
     FullName NVARCHAR(100) NOT NULL,
-    IdentityCard VARCHAR(20) NOT NULL UNIQUE,   -- CCCD / Passport
+    IdentityCard VARCHAR(20) NOT NULL UNIQUE,   
     Phone VARCHAR(15) NOT NULL,
     Email VARCHAR(100) NOT NULL UNIQUE,
-    LoyaltyTier NVARCHAR(20) DEFAULT N'Standard', -- Standard, Silver, Gold, VIP
+    LoyaltyTier NVARCHAR(20) DEFAULT N'Standard', 
     TotalPoints INT DEFAULT 0,
     CreatedAt DATETIME DEFAULT GETDATE(),
     
@@ -102,7 +93,7 @@ CREATE TABLE Bookings (
     CheckOutDate DATE NOT NULL,
     TotalAmount DECIMAL(18,2) DEFAULT 0,
     DepositAmount DECIMAL(18,2) DEFAULT 0,
-    BookingStatus NVARCHAR(20) DEFAULT N'Confirmed', -- Confirmed, CheckedIn, CheckedOut, Cancelled
+    BookingStatus NVARCHAR(20) DEFAULT N'Confirmed', 
     Notes NVARCHAR(255) NULL,
     
     CONSTRAINT FK_Bookings_Customers FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID),
@@ -131,9 +122,9 @@ GO
 CREATE TABLE Services (
     ServiceID INT IDENTITY(1,1) PRIMARY KEY,
     ServiceName NVARCHAR(100) NOT NULL,
-    Category NVARCHAR(50) NOT NULL,             -- Dining, Spa, Transport, Laundry, Entertainment
+    Category NVARCHAR(50) NOT NULL,             
     UnitPrice DECIMAL(18,2) NOT NULL,
-    Unit NVARCHAR(20) NOT NULL,                 -- Suat, Lan, Chuyen, Luot, Gio
+    Unit NVARCHAR(20) NOT NULL,               
     
     CONSTRAINT CK_Services_Price CHECK (UnitPrice >= 0)
 );
@@ -163,10 +154,10 @@ CREATE TABLE Invoices (
     RoomCharge DECIMAL(18,2) NOT NULL,
     ServiceCharge DECIMAL(18,2) DEFAULT 0,
     DiscountAmount DECIMAL(18,2) DEFAULT 0,
-    TaxAmount DECIMAL(18,2) DEFAULT 0,          -- Thue VAT 8% hoac 10%
+    TaxAmount DECIMAL(18,2) DEFAULT 0,         
     FinalAmount DECIMAL(18,2) NOT NULL,
-    PaymentMethod NVARCHAR(30) NOT NULL,        -- Cash, CreditCard, BankTransfer, EWallet
-    PaymentStatus NVARCHAR(20) DEFAULT N'Paid', -- Paid, Pending, Refunded
+    PaymentMethod NVARCHAR(30) NOT NULL,       
+    PaymentStatus NVARCHAR(20) DEFAULT N'Paid', 
     
     CONSTRAINT FK_Invoices_Bookings FOREIGN KEY (BookingID) REFERENCES Bookings(BookingID),
     CONSTRAINT CK_Invoices_PaymentMethod CHECK (PaymentMethod IN (N'Cash', N'CreditCard', N'BankTransfer', N'EWallet')),
@@ -177,7 +168,7 @@ GO
 -- BANG 10: Nhat ky he thong / Kiem toan (AuditLogs)
 CREATE TABLE AuditLogs (
     LogID INT IDENTITY(1,1) PRIMARY KEY,
-    ActionType NVARCHAR(20) NOT NULL,           -- INSERT, UPDATE, DELETE, PRICE_CHANGE
+    ActionType NVARCHAR(20) NOT NULL,           
     TableName NVARCHAR(50) NOT NULL,
     RecordID INT NULL,
     OldValue NVARCHAR(MAX) NULL,
