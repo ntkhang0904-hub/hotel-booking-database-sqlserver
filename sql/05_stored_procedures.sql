@@ -1,9 +1,3 @@
--- ============================================================================
--- DU AN: HE THONG CSDL QUAN LY & DAT PHONG CHUOI KHACH SAN (HOTEL BOOKING DB)
--- FILE: 05_stored_procedures.sql
--- MO TA: Tao cac Thu tuc luu tru (Stored Procedures) co Transaction va Error Handling
--- ============================================================================
-
 USE HotelBookingDB;
 GO
 
