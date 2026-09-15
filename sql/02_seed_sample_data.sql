@@ -1,9 +1,3 @@
--- ============================================================================
--- DU AN: HE THONG CSDL QUAN LY & DAT PHONG CHUOI KHACH SAN (HOTEL BOOKING DB)
--- FILE: 02_seed_sample_data.sql
--- MO TA: Nap du lieu mau phong phu phan anh nghiep vu thuc te tai Viet Nam
--- ============================================================================
-
 USE HotelBookingDB;
 GO
 
