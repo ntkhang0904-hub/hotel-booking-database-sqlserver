@@ -1,9 +1,3 @@
--- ============================================================================
--- DU AN: HE THONG CSDL QUAN LY & DAT PHONG CHUOI KHACH SAN (HOTEL BOOKING DB)
--- FILE: 03_views.sql
--- MO TA: Tao cac Khung Nhin (Views) phuc vu bao cao quan ly va nghiep vu
--- ============================================================================
-
 USE HotelBookingDB;
 GO
 
