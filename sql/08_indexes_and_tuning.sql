@@ -1,15 +1,6 @@
-﻿-- ============================================================================
--- DU AN: HE THONG CSDL QUAN LY & DAT PHONG CHUOI KHACH SAN (HOTEL BOOKING DB)
--- FILE: 08_indexes_and_tuning.sql
--- MO TA: Toi uu hoa chi muc (Indexing Strategy), Filtered Indexes va Danh gia hieu nang
--- ============================================================================
-
 USE HotelBookingDB;
 GO
 
--- ============================================================================
--- 1. TAO CAC NON-CLUSTERED INDEXES CHO KHOA NGOAI & COT TRUY VAN PHO BIEN
--- ============================================================================
 
 -- Index 1: Tim kiem phong theo chi nhanh va trang thai (Composite Index)
 IF EXISTS (SELECT * FROM sys.indexes WHERE name = 'IX_Rooms_Branch_Status' AND object_id = OBJECT_ID('Rooms'))
@@ -86,10 +77,6 @@ ON Customers (Phone)
 INCLUDE (FullName, IdentityCard, Email, LoyaltyTier, TotalPoints);
 GO
 
--- ============================================================================
--- 2. DEMO SO SANH HIEU NANG VA KIEM TRA THONG KE (STATISTICS & EXECUTION PLAN)
--- ============================================================================
-
 PRINT '--- Bat thong so do luong thoi gian va so lan doc I/O ---';
 SET STATISTICS IO ON;
 SET STATISTICS TIME ON;
@@ -123,9 +110,7 @@ SET STATISTICS IO OFF;
 SET STATISTICS TIME OFF;
 GO
 
--- ============================================================================
--- 3. TRUY VAN KIEM SOAT MUC DO PHAN MANH CHI MUC (INDEX FRAGMENTATION REPORT)
--- ============================================================================
+    
 PRINT '--- Bao cao do phan manh chi muc trong he thong ---';
 SELECT 
     OBJECT_NAME(ips.object_id) AS TableName,
