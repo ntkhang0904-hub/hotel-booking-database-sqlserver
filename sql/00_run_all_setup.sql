@@ -1,10 +1,4 @@
-﻿-- ============================================================================
--- DU AN: HE THONG CSDL QUAN LY & DAT PHONG CHUOI KHACH SAN (HOTEL BOOKING DB)
--- FILE: 00_run_all_setup.sql
--- MO TA: Tap lenh tong hop Master Script chay toan bo du an
--- ============================================================================
-
--- LUA CHON 1 (Khuyen nghi):
+-- LUA CHON 1:
 -- Mo file "00_all_in_one_install.sql" trong SSMS va bam [Execute] (hoac F5).
 -- File do da gom day du toan bo cac buoc: Tao bang, Nap du lieu, Views, Functions,
 -- Stored Procedures, Triggers va Indexes ma khong can bat SQLCMD.
