@@ -1,9 +1,4 @@
-﻿-- ============================================================================
--- DU AN: HE THONG CSDL QUAN LY & DAT PHONG CHUOI KHACH SAN (HOTEL BOOKING DB)
--- FILE: 06_triggers.sql
--- MO TA: Cac Trigger tu dong kiem soat toan ven du lieu, chong trung lich va ghi log
--- ============================================================================
-
+﻿
 USE HotelBookingDB;
 GO
 
