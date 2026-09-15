@@ -1,16 +1,5 @@
-﻿-- ============================================================================
--- DU AN: HE THONG CSDL QUAN LY & DAT PHONG CHUOI KHACH SAN (HOTEL BOOKING DB)
--- FILE: 07_advanced_queries.sql
--- MO TA: 16 Truy van nang cao phuc vu Bao cao Quan tri, Phan tich Doanh thu & Hanh vi
---        Su dung cac ky thuat: CTE, Window Functions, PIVOT, Subqueries, Joins
--- ============================================================================
-
-USE HotelBookingDB;
+﻿USE HotelBookingDB;
 GO
-
--- ============================================================================
--- NHOM 1: TRUY VAN CO BAN & TONG HOP NGHIEP VU (BASIC & AGGREGATIONS)
--- ============================================================================
 
 -- TRUY VAN 1: Thong ke danh sach khach hang, so lan dat phong va tong diem tich luy
 PRINT '--- Q1: Thong ke tong quan khach hang ---';
@@ -77,10 +66,6 @@ JOIN ServiceOrders so ON s.ServiceID = so.ServiceID
 GROUP BY s.ServiceID, s.ServiceName, s.Category, s.UnitPrice, s.Unit
 ORDER BY TotalQuantityOrdered DESC;
 GO
-
--- ============================================================================
--- NHOM 2: TRUY VAN NANG CAO (SUBQUERIES, MULTI-JOINS & FILTERING)
--- ============================================================================
 
 -- TRUY VAN 5: Tim nhung khach hang da tung dat phong tai tu 2 chi nhanh tro len (Khach hang lien tinh)
 PRINT '--- Q5: Khach hang lien tinh (Cross-branch customers) ---';
@@ -161,10 +146,6 @@ JOIN Services s ON so.ServiceID = s.ServiceID
 WHERE s.Category IN (N'Spa', N'Transport')
 ORDER BY so.TotalServicePrice DESC;
 GO
-
--- ============================================================================
--- NHOM 3: WINDOW FUNCTIONS (DENSE_RANK, ROW_NUMBER, LAG, LEAD, SUM OVER)
--- ============================================================================
 
 -- TRUY VAN 9: Xep hang Top 3 khach hang chi tieu cao nhat trong tung chi nhanh (DENSE_RANK)
 PRINT '--- Q9: Top 3 khach hang chi tieu theo tung chi nhanh ---';
@@ -295,10 +276,6 @@ SELECT
 FROM CustomerTotalSpent
 ORDER BY LifetimeValue DESC;
 GO
-
--- ============================================================================
--- NHOM 4: CTE PHUC TAP & PHAN TICH CHUYEN SAU (COMPLEX CTE & KPI)
--- ============================================================================
 
 -- TRUY VAN 14: Bang chi so KPI Khach san (ADR - Average Daily Rate, RevPAR) theo chi nhanh
 PRINT '--- Q14: Chi so KPI Khach san (ADR & Doanh thu) ---';
