@@ -1,0 +1,23 @@
+﻿# SQL Server Database files
+*.mdf
+*.ldf
+*.ndf
+*.bak
+*.trn
+
+# SQL Server Management Studio & Visual Studio files
+*.sqlsuo
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+.vs/
+bin/
+obj/
+
+# OS temporary files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
