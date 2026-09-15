@@ -1,21 +1,3 @@
--- ============================================================================
--- DU AN: HE THONG CSDL QUAN LY & DAT PHONG CHUOI KHACH SAN (HOTEL BOOKING DB)
--- FILE: 00_all_in_one_install.sql
--- MO TA: Tap lenh ALL-IN-ONE cai dat tron ven toan bo he thong chi voi 1 lan bam F5
---        Chay duoc truc tiep tren SSMS, Azure Data Studio, hoac sqlcmd
--- ============================================================================
-
-
--- ============================================================================
--- PHAN TIEP THEO: 01_schema_and_tables.sql
--- ============================================================================
-
--- ============================================================================
--- DU AN: HE THONG CSDL QUAN LY & DAT PHONG CHUOI KHACH SAN (HOTEL BOOKING DB)
--- FILE: 01_schema_and_tables.sql
--- MO TA: Khoi tao CSDL, 10 Bang quan he va cac Rang buoc toan ven (Constraints)
--- ============================================================================
-
 -- 1. TAO DATABASE
 IF NOT EXISTS (SELECT * FROM sys.databases WHERE name = 'HotelBookingDB')
 BEGIN
