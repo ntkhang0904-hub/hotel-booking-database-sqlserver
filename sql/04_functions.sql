@@ -1,9 +1,3 @@
--- ============================================================================
--- DU AN: HE THONG CSDL QUAN LY & DAT PHONG CHUOI KHACH SAN (HOTEL BOOKING DB)
--- FILE: 04_functions.sql
--- MO TA: Tao cac Ham (User-Defined Functions) xu ly nghiep vu tinh toan
--- ============================================================================
-
 USE HotelBookingDB;
 GO
 
